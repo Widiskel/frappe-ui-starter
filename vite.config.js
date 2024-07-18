@@ -1,15 +1,15 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import path from 'path'
-import { getProxyOptions } from 'frappe-ui/src/utils/vite-dev-server'
 import { webserver_port } from '../../../sites/common_site_config.json'
+import { FrappeUiUtils } from './src/utils/frappe_ui_utils'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue()],
   server: {
     port: 8080,
-    proxy: getProxyOptions({ port: webserver_port }),
+    proxy: FrappeUiUtils.proxyOptions({ port: webserver_port }),
   },
   resolve: {
     alias: {
